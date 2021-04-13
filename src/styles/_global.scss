@@ -1,0 +1,42 @@
+@import "./constants";
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    
+    #app {
+
+        min-height: 100vh;
+        .navbar {
+            @include fx-jc-c;
+            @include fx-ai-c;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: $navbarWidth;
+            height: $navbarHeight;
+            background-color: $navbarBackgroundColor;
+            .btn-wrap {
+                @include fx-jc-sb;
+                flex-wrap: wrap;
+                width: 60%;
+                .navbar-btn {
+                    @include fx-jc-c;
+                    color: white;
+                    width: $navbarBtnWidth;
+                    padding: 10px;
+                    box-shadow: 0 0 0 2px;
+                    font-weight: 500;
+                    &:hover {
+                        background-color: white;
+                        color: $navbarBackgroundColor;
+                        cursor: pointer;
+                        box-shadow: 0 0 0 2px white;
+                    }
+                }
+            }
+            
+        }
+    }
+}

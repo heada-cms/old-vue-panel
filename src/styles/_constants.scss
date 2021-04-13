@@ -1,0 +1,44 @@
+//import fonts and libraries
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+//global mixins 
+
+
+
+
+@mixin fx {
+    display: flex;
+}
+
+@mixin fx-jc-c {
+    @include fx;
+    justify-content: center;
+}
+
+@mixin fx-jc-sb {
+    @include fx;
+    justify-content: space-between;
+}
+
+@mixin fx-ai-c {
+    @include fx;
+    align-items: center;
+}
+
+
+
+
+
+//navbar variables
+$navbarWidth: 100%;
+$navbarHeight: 100px;
+$navbarBackgroundColor: #1ed875;
+
+//navbar button variables
+
+$navbarBtnColor: white;
+$navbarBtnWidth: 100px;
+
+
+//login view variables
+
+$loginViewBackgroundColor: $navbarBackgroundColor;
