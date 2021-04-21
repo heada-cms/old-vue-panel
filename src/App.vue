@@ -5,16 +5,17 @@
 
 <script lang="ts">
 import { NavBar } from "@/components/NavBar";
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
   components: {
     NavBar
   },
   computed: {
-    isLoginView(): boolean {
-      return this.$route.path === "/login"
+    isLoginView(){
+      return this.$route.path === "/login";
     }
   }
-}
+})
 </script>
 
 <style lang="scss">

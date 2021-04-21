@@ -1,4 +1,4 @@
-export function setRemoteResource (
+export function useRemoteResource (
     getPath: string,
     otherPaths: {
         postPath?: string, 
@@ -7,7 +7,7 @@ export function setRemoteResource (
         getOnePath?: string 
     } = {},
     authenticationData?: string 
-) { 
+): Array<any>  { 
     const fetchOptions = function (method: string) {
         return { method: method, headers: {
                 "Authorization": `${authenticationData}`
