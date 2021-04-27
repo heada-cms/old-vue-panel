@@ -16,6 +16,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/resources",
     name: "resources",
     component: () => import(/* webpackChunkName: "resources" */ '../views/resources.vue')
+  },
+  {
+    path: "/resource/add",
+    name: "add-resource",
+    component: () => import(/* webpackChunkName: "add-resource" */ '../views/addResource.vue' )
   }
 ]
 

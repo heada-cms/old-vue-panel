@@ -1,5 +1,5 @@
 <template>
-    <div class="login">
+    <div class="login-view">
         <div class="form-card">
                 <div class="form-wrapper">
                     <h3>Login to your app</h3>
@@ -30,7 +30,7 @@ export default defineComponent({
 </script>
 <style lang="scss" >
     @import "../styles/_global.scss";
-    .login {
+    .login-view {
         @include fx-jc-c;
         @include fx-ai-c;
         height: 100vh;
