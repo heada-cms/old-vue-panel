@@ -1,4 +1,15 @@
-export default function useFetch(url: string, authMethod:Record<string, string> = {}): Array<(id: string) => Promise<unknown>> {
+interface fetchFunctions {
+    getMany: () => Promise<any>;
+    getOne: (id: string) => Promise<any>;
+    create: (body: unknown) => Promise<any>;
+    del: (id: string) => Promise<any>;
+    update: (id: string, body: unknown) => Promise<any>;
+}
+
+
+
+
+export default function useFetch(url: string, authMethod:Record<string, string> = {}): fetchFunctions {
     
     const getMany = () => 
         fetch(url, {
@@ -38,8 +49,16 @@ export default function useFetch(url: string, authMethod:Record<string, string> 
         })
         .then(response => response.json())
 
-    
+    const del = (id: string) => 
+        fetch(`${url}/${id}`, { 
+            headers: { 
+                "Content-Type": "application/json", 
+                ...authMethod 
+            },
+            method: "DELETE"
+        })
+        .then(response => response.json());
 
 
-    return [getMany, getOne, create, update]
+    return {getMany, getOne, create, update, del}
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48"
+   height="48"
+   viewBox="0 0 12.7 12.7"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="heada-logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="8.1840269"
+     inkscape:cx="41.605435"
+     inkscape:cy="16.923209"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="2391"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     showborder="true"
+     units="px" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="opacity:1;fill:#ffffff;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.54241;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path31"
+       cx="6.3363481"
+       cy="5.4338961"
+       rx="6.0721388"
+       ry="5.1582022" />
+    <ellipse
+       style="opacity:1;fill:#ffffff;fill-opacity:0;stroke:#000000;stroke-width:0.542408;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1462"
+       cx="3.920917"
+       cy="3.755192"
+       rx="1.1741704"
+       ry="1.0987891" />
+    <ellipse
+       style="opacity:1;fill:#ffffff;fill-opacity:0;stroke:#000000;stroke-width:0.542408;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1464"
+       cx="9.0537081"
+       cy="4.1825008"
+       rx="1.3418591"
+       ry="1.0987891" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:0;stroke:#000000;stroke-width:0.542408;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1488"
+       width="7.5146899"
+       height="1.7702706"
+       x="2.4112692"
+       y="10.653141" />
+  </g>
+</svg>

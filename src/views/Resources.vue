@@ -1,32 +1,33 @@
 <template>
     <div class="resourcesPage columns is-centered">
         <div class="column is-half">
-            <table class="table is-bordered is-hoverable is-fullwidth">
-                <thead>
-                    <tr>
-                        <th>Resource name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Post</td>
-                    </tr>
-                    <tr>
-                        <td>Book</td>
-                    </tr>
-                </tbody>
-            </table>
+            <Table :classProps="{'is-bordered': true, 'is-fullwidth': true, 'is-hoverable': true}" :keys="[{name:'Resource name', displayName: 'Resource name'}]"
+                :data="resources.values"
+             />
         </div>
     </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive } from 'vue'
+import { useRouter } from "vue-router";
+import useFetch from "@/hooks/useFetch";
+import Table from '@/components/Table.vue';
 
 export default defineComponent({
+    components: {
+        Table,
+    },
     setup() {
-        const text = ref("Cello der");
+        const { getMany } = useFetch('http://localhost:3000/template');
+        const resources = reactive([]);
+        const router = useRouter();
 
-        return { text }
+        getMany()
+            .then(fetched => { 
+                resources.values = fetched.map((el:Record<string, unknown>) => ({data: el.name, onClick: () => router.push(`/resources/${el.name}`)}))
+            })
+
+        return { resources }
     },
 })
 </script>
