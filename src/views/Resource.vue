@@ -22,7 +22,7 @@ export default defineComponent({
     setup() {
         const route = useRoute();
         const resourceName = ref(route.params.name);
-        const {getMany} = useFetch(`http://localhost:3000/${resourceName.value}`);
+        const {getMany} = useFetch(`${process.env.VUE_APP_API_URL}/${resourceName.value}`);
         
         const data = reactive([]);
 

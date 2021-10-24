@@ -7,13 +7,13 @@
                 </figure>
                 
             </div>
-            <a role="button" aria-label="menu" @click.stop="showBurgerMenu = !showBurgerMenu" class="navbar-burger" :class="{'is-active': showBurgerMenu}" data-target="navbarExample">
+            <a role="button" aria-label="menu" @click.stop="showBurgerMenu = !showBurgerMenu" class="navbar-burger" :class="{'is-active': showBurgerMenu}">
                 <span></span>
                 <span></span>
                 <span></span>
             </a>
         </div>
-        <div class="navbar-menu" id="navbarExample" :class="{'is-active': showBurgerMenu}">
+        <div class="navbar-menu" :class="{'is-active': showBurgerMenu}">
             <div class="navbar-start">
                 <a class="navbar-item" @click.stop="el.routeHandler" v-for="el in menuPositions" :key="el.name">
                     {{el.name}}
