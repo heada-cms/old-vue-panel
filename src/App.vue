@@ -1,16 +1,19 @@
 <template>
-  <Navbar />
+  <Navbar v-if="showNavbar" />
   <router-view/>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
+import { useRoute } from 'vue-router';
 import Navbar from "./components/Navbar.vue";
 export default defineComponent({
   components: {
     Navbar
   },
   setup() {
-    return {}
+    const route = useRoute();
+    const showNavbar =  computed(() => route.fullPath !== '/login')
+    return {showNavbar}
   },
 })
 </script>
