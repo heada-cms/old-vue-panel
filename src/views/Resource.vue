@@ -13,6 +13,7 @@ import { defineComponent, reactive, ref } from 'vue'
 import Table from "@/components/Table.vue";
 import { useRoute } from "vue-router";
 import useFetch from "@/hooks/useFetch";
+import { useStore } from 'vuex';
 
 
 export default defineComponent({
@@ -20,9 +21,12 @@ export default defineComponent({
         Table
     },
     setup() {
+        const store = useStore();
         const route = useRoute();
         const resourceName = ref(route.params.name);
-        const {getMany} = useFetch(`${process.env.VUE_APP_API_URL}/${resourceName.value}`);
+        const {getMany} = useFetch(`${process.env.VUE_APP_API_URL}/${resourceName.value}`, {
+           "Authorization": `Bearer ${store.getters["Token"]}`
+        });
         
         const data = reactive([]);
 

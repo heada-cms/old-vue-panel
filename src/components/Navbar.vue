@@ -19,16 +19,20 @@
                     {{el.name}}
                 </a>
             </div>
+            <div class="navbar-end">
+                <a class="navbar-item" @click.stop="logOut" >Logout</a>
+            </div>
         </div>
     </nav>
 </template>
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 export default defineComponent({
     setup() {
         const router = useRouter();
-
+        const store = useStore();
         // eslint-disable-next-line @typescript-eslint/no-var-requires
 
         const showBurgerMenu = ref(false);
@@ -42,9 +46,15 @@ export default defineComponent({
         }))
         
         )
+    
+
+        const logOut = () => { 
+            store.dispatch('logout');
+            router.push('/login');
+        }
 
 
-        return {menuPositions,showBurgerMenu}
+        return {menuPositions,showBurgerMenu, logOut}
     },
 })
 </script>

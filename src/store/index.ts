@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import createPersistedState from "vuex-persistedstate";
 import useFetch from '@/hooks/useFetch';
 export default createStore({
   state: {
@@ -15,7 +16,7 @@ export default createStore({
   },
   actions: {
     async fetchResources(context) {
-      const {getMany} = useFetch(`${process.env.VUE_APP_API_URL}/template`);
+      const {getMany} = useFetch(`${process.env.VUE_APP_API_URL}/template`, {"Authorization": `Bearer ${context.state.token}`});
 
       const fetched = await getMany();
       if (context.state.resources !== fetched)
@@ -41,8 +42,14 @@ export default createStore({
   getters: {
     loggedIn(state) {
       return state.token.length > 0;
+    },
+    Token(state) {
+      return state.token;
     }
   },
   modules: {
-  }
+  },
+  plugins: [createPersistedState({
+    paths: ['token']
+  })]
 })
