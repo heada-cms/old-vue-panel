@@ -30,7 +30,12 @@ const routes: Array<RouteRecordRaw> = [
     name: "CreateResource",
     component: () => import("@/views/createResource.vue"),
     meta: {requiresAuth: true}
-  }
+  },
+  {
+    path: "/resources/:name/create",
+    name: "CreateResourceInstance",
+    component: () => import("@/views/createResourceInstance.vue")
+  } 
 ]
 
 

@@ -1,3 +1,7 @@
+/* eslint-disable */
+import router from "@/router";
+import store from "@/store";
+
 interface fetchFunctions {
     getMany: () => Promise<any>;
     getOne: (id: string) => Promise<any>;
@@ -7,7 +11,12 @@ interface fetchFunctions {
 }
 
 
-
+function handleResponse(response:Response) {
+    if (!response.ok) {
+        return response;
+    }
+    return response.json();
+}
 
 export default function useFetch(url: string, authMethod:Record<string, string> = {}): fetchFunctions {
     
@@ -18,7 +27,8 @@ export default function useFetch(url: string, authMethod:Record<string, string> 
                 ...authMethod
             }
         })
-        .then(response => response.json());
+        .then(handleResponse)
+        
     
     const getOne = (id: string) => 
         fetch(`${url}/${id}`, { 
@@ -27,7 +37,8 @@ export default function useFetch(url: string, authMethod:Record<string, string> 
                 ...authMethod 
             } 
         })
-        .then(response => response.json());
+        .then(handleResponse)
+        
     const create = (body: unknown) => 
         fetch(url, {
             headers: { 
@@ -37,7 +48,7 @@ export default function useFetch(url: string, authMethod:Record<string, string> 
             method: "POST",
             body: JSON.stringify(body)
         })
-        .then(response => response.json());
+        .then(handleResponse)
     const update = (id: string, body: unknown) => 
         fetch(`${url}/${id}`, {
             headers: { 
@@ -47,7 +58,7 @@ export default function useFetch(url: string, authMethod:Record<string, string> 
             method: "PATCH",
             body: JSON.stringify(body) 
         })
-        .then(response => response.json())
+        .then(handleResponse)
 
     const del = (id: string) => 
         fetch(`${url}/${id}`, { 
@@ -57,7 +68,7 @@ export default function useFetch(url: string, authMethod:Record<string, string> 
             },
             method: "DELETE"
         })
-        .then(response => response.json());
+        .then(handleResponse)
 
 
     return {getMany, getOne, create, update, del}

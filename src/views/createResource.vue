@@ -104,7 +104,6 @@ import { defineComponent, ref, reactive } from 'vue';
 import useFetch from "@/hooks/useFetch";
 import { useStore } from 'vuex';
 import { useRouter } from "vue-router";
-import router from '@/router';
 interface IField {
     fieldName: string;
     properties: {

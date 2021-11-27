@@ -1,5 +1,12 @@
 <template>
-    <div class="resourcePage columns is-centered">
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <button class="button is-fullwidth is-link" @click="router.push(`/resources/${resourceName}/create`)">
+                Add a new instance of {{resourceName}}
+            </button>
+        </div>
+    </div>
+    <div class="columns is-centered">
         <div class="column is-half">
             <Table :classProps="{'is-fullwidth': true, 'is-bordered': true, 'is-hoverable': true}" :keys="[{name: `${resourceName}`, displayName: `${resourceName}`}]"
                 :data="data.values"
@@ -11,7 +18,7 @@
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
 import Table from "@/components/Table.vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter} from "vue-router";
 import useFetch from "@/hooks/useFetch";
 import { useStore } from 'vuex';
 
@@ -23,6 +30,7 @@ export default defineComponent({
     setup() {
         const store = useStore();
         const route = useRoute();
+        const router = useRouter();
         const resourceName = ref(route.params.name);
         const {getMany} = useFetch(`${process.env.VUE_APP_API_URL}/${resourceName.value}`, {
            "Authorization": `Bearer ${store.getters["Token"]}`
@@ -36,7 +44,7 @@ export default defineComponent({
             })
             
 
-        return {data, resourceName};
+        return {data, resourceName, router};
     },
 })
 </script>
