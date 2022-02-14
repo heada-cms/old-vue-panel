@@ -1,5 +1,8 @@
 <template>
     <div class="columns is-centered">
+        
+    </div>
+    <div class="columns is-centered">
         <div class="column is-half">
             <button class="button is-fullwidth is-link" @click="router.push(`/resources/${resourceName}/create`)">
                 Add a new instance of {{resourceName}}
@@ -40,11 +43,21 @@ export default defineComponent({
 
         getMany()
             .then(fetched => {
-                data.values = fetched.map((el: Record<string, unknown>) => ({data: el}));
+                data.values = fetched.map((el: Record<string, unknown>) => ({data: el, onClick: () => router.push(`/resources/${route.params.name}/${el._id}`)}));
             })
             
+        
 
-        return {data, resourceName, router};
+        const keyActions = reactive({
+            create: false,
+            read: false,
+            update: false,
+            delete: false
+        });
+
+
+
+        return {data, resourceName, router, keyActions};
     },
 })
 </script>

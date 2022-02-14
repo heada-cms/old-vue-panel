@@ -4,6 +4,7 @@ import useFetch from '@/hooks/useFetch';
 export default createStore({
   state: {
     resources: [],
+    users: [],
     token: ''
   },
   mutations: {
@@ -12,6 +13,14 @@ export default createStore({
     },
     setResources(state, newResources) {
       state.resources = newResources;
+    },
+    setUsers(state, newUsers) {
+      state.users = newUsers;
+    },
+    clearAll(state) {
+      state.resources = [];
+      state.users = [];
+      state.token = '';
     }
   },
   actions: {
@@ -21,6 +30,13 @@ export default createStore({
       const fetched = await getMany();
       if (context.state.resources !== fetched)
         context.commit('setResources', fetched);
+    },
+    async fetchUsers(context) {
+      const { getMany } = useFetch(`${process.env.VUE_APP_API_URL}/user`, { Authorization: `Bearer ${context.state.token}` });
+      const fetched = await getMany();
+
+      if (context.state.resources !== fetched)
+        context.commit('setUsers', fetched);
     },
     async login(context, payload: {username: string, password: string}) {
       const response = await fetch(`${process.env.VUE_APP_API_URL}/user/auth`, { 
@@ -36,7 +52,7 @@ export default createStore({
       context.commit('setToken', token);
     },
     async logout({commit}) {
-      commit('setToken', '');
+      commit('clearAll');
     }
   },
   getters: {
@@ -50,6 +66,6 @@ export default createStore({
   modules: {
   },
   plugins: [createPersistedState({
-    paths: ['token']
+    paths: ['token', 'resources']
   })]
 })

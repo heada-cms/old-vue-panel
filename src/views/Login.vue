@@ -46,6 +46,8 @@ export default defineComponent({
             buttonLoading.value = false;
             if (store.getters["loggedIn"]) {
                 router.push('/');
+            } else {
+                buttonLoading.value = false;
             }
         }
 

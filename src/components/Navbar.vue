@@ -39,7 +39,9 @@ export default defineComponent({
 
         const menuPositions = reactive([
             {name: "Home", href: "/"},
-            {name: "Resources", href: "/resources"}
+            {name: "Resources", href: "/resources"},
+            {name: "Create API key", href: "/apikey"},
+            {name: "Users", href: "/users"}
         ].map(el => ({
             ...el,
             routeHandler: () => { showBurgerMenu.value = false; router.push(el.href); }

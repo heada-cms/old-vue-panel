@@ -10,13 +10,17 @@ interface fetchFunctions {
     update: (id: string, body: unknown) => Promise<any>;
 }
 
-
-function handleResponse(response:Response) {
-    if (!response.ok) {
-        return response;
+function handleResponse(toJSON: boolean = true) {
+    return async (response:Response) => {
+        console.log("RESPONSE: ",response);
+        if (!response.ok || !toJSON) {
+            return response;
+        }
+        return await response.json();
     }
-    return response.json();
 }
+
+
 
 export default function useFetch(url: string, authMethod:Record<string, string> = {}): fetchFunctions {
     
@@ -27,7 +31,7 @@ export default function useFetch(url: string, authMethod:Record<string, string> 
                 ...authMethod
             }
         })
-        .then(handleResponse)
+        .then(handleResponse())
         
     
     const getOne = (id: string) => 
@@ -37,7 +41,7 @@ export default function useFetch(url: string, authMethod:Record<string, string> 
                 ...authMethod 
             } 
         })
-        .then(handleResponse)
+        .then(handleResponse())
         
     const create = (body: unknown) => 
         fetch(url, {
@@ -48,7 +52,7 @@ export default function useFetch(url: string, authMethod:Record<string, string> 
             method: "POST",
             body: JSON.stringify(body)
         })
-        .then(handleResponse)
+        .then(handleResponse())
     const update = (id: string, body: unknown) => 
         fetch(`${url}/${id}`, {
             headers: { 
@@ -58,17 +62,16 @@ export default function useFetch(url: string, authMethod:Record<string, string> 
             method: "PATCH",
             body: JSON.stringify(body) 
         })
-        .then(handleResponse)
+        .then(handleResponse())
 
     const del = (id: string) => 
         fetch(`${url}/${id}`, { 
             headers: { 
-                "Content-Type": "application/json", 
                 ...authMethod 
             },
             method: "DELETE"
         })
-        .then(handleResponse)
+        .then(handleResponse(false))
 
 
     return {getMany, getOne, create, update, del}

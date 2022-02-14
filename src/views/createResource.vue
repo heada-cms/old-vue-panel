@@ -19,7 +19,6 @@
                     <tr>
                         <th>Operation</th>
                         <th>Requires Auth</th>
-                        <th>Available auth methods</th>
                     </tr>  
                 </thead>
                 <tbody>
@@ -27,17 +26,11 @@
                         <td>{{key}}</td>
                         <td>
                             <div class="select is-primary">
-                                <select v-model="authorizationOptions[key].requiresAuth">
+                                <select v-model="authorizationOptions[key]">
                                     <option :value="false">False</option>
                                     <option :value="true">True</option>
                                 </select>
                             </div>
-                        </td>
-                        <td>
-                            <input type="checkbox" v-model="authorizationOptions[key].availableMethods" value="Bearer" :id="`${key}Bearer`">
-                            <label :for="`${key}Bearer`">Bearer</label>
-                            <input type="checkbox" v-model="authorizationOptions[key].availableMethods" value="apiKey" :id="`${key}apiKey`">
-                            <label :for="`${key}apiKey`">API key</label>
                         </td>
                     </tr>
                 </tbody>
@@ -142,22 +135,10 @@ export default defineComponent({
 
         const FieldLogic = fieldLogic();
         const authorizationOptions = reactive({
-            read: {
-                requiresAuth: true,
-                availableMethods: ["Bearer"]
-            },
-            create: {
-                requiresAuth: true,
-                availableMethods: ["Bearer"]
-            },
-            update: {
-                requiresAuth: true,
-                availableMethods: ["Bearer"]
-            },
-            delete: {
-                requiresAuth: true,
-                availableMethods: ["Bearer"]
-            }
+            read: true,
+            create: true,
+            delete: true,
+            update: true
         })
 
 

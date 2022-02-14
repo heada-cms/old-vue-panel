@@ -21,6 +21,12 @@ const routes: Array<RouteRecordRaw> = [
     meta: {requiresAuth: true}
   },
   {
+    path: '/resources/:name/:id',
+    name: "EditResource",
+    component: () => import("@/views/editResourceInstance.vue"),
+    meta: {requiresAuth: true}
+  },
+  {
     path: '/login',
     name: "Login",
     component: () => import("@/views/Login.vue")
@@ -34,8 +40,27 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/resources/:name/create",
     name: "CreateResourceInstance",
-    component: () => import("@/views/createResourceInstance.vue")
-  } 
+    component: () => import("@/views/createResourceInstance.vue"),
+    meta: {requiresAuth: true}
+  },
+  {
+    path: "/apikey",
+    name: "CreateAPIKey",
+    component: () => import("@/views/createAPIKey.vue"),
+    meta: {requiresAuth: true}
+  },
+  {
+    path: "/users",
+    name: "Users",
+    component: () => import("@/views/Users.vue"),
+    meta: {requiresAuth: true}
+  }, 
+  {
+    path: "/users/create",
+    name: "CreateUser",
+    component: () => import("@/views/createUser.vue"),
+    meta: {requiresAuth: true}
+  }
 ]
 
 
